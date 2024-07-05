@@ -1,0 +1,16 @@
+
+<%= link_to 'Home', '/' %>
+<%= link_to 'back', '/users' %>
+
+<h1> User Profile </h1>
+
+<p> Name: <%= @user.name %> </p>
+<p> Email: <%= @user.email %> </p>
+<p> Cnic: <%= @user.cnic %> </p>
+
+<h1> User Posts </h1>
+<% @projects.each do |project| %>
+  <h3><%= project.title %></h3>
+  <p><%= project.description %></p>
+  <p>Users: <%= project.users.pluck(:name).join(', ') %></p>
+<% end %>

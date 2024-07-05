@@ -1,0 +1,16 @@
+<h1><%='Create a new project' %></h1>
+
+<%= form_with model: @project do |p| %>
+Title: <%= p.text_field :title %> <br> <br>
+Description: <%= p.text_field :description %> <br> <br>
+
+  <%= p.fields_for :user_projects do |u| %>
+    <%= u.label :user_id %>
+    <%= u.collection_select :user_id, User.all, :id, :name, { prompt: true } %> <br><br>
+  <% end %>
+
+
+<%= p.submit %>
+<% end %>
+
+

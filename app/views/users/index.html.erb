@@ -1,0 +1,33 @@
+
+<%= link_to 'Home', '/' %>
+
+<h1>Welcome to User Manager</h1>
+
+<table border>
+<tr>
+  <th> ID </th>
+  <th> Name </th>
+  <th> Email </th>
+  <th> CNIC </th>
+  <th> Actions </th>
+</tr>
+
+  <% @users.each do |user| %>
+</tr>
+    <td> <%= user.id %> </td>
+    <td> <%= link_to user.name, user_path(user) %> </td>
+    <td> <%= user.email %> </td>
+    <td> <%= user.cnic %> </td>
+    <td>
+      <%= link_to 'Edit', edit_user_path(user) %>
+      <%= button_to 'Delete',  user_path(user), method: "delete" %>
+    </td>
+
+
+
+</tr>
+  <% end %>
+</table>
+
+<%= link_to 'Add a new User', new_user_path %>
+

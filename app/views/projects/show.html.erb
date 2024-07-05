@@ -1,0 +1,9 @@
+<h1>Project Details</h1>
+
+<p>Title: <%= @project.title %></p>
+<p>Description: <%= @project.description %></p>
+
+<h1>Project Users</h1>
+<% @users.each do |user| %>
+  <p><%= user.name %></p>
+<% end %>
