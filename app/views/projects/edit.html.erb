@@ -1,7 +1,7 @@
 <%= link_to 'Home', '/' %>
 <%= link_to 'Back', '/projects' %>
 
-<h1><%='Create a new project' %></h1>
+<h1><%='Edit project' %></h1>
 
 <% if flash[:errors].present? %>
   <div id="error_explanation">
@@ -13,15 +13,20 @@
     </ul>
   </div>
 <% end %>
-
 <%= form_with model: @project do |p| %>
+
 Title: <%= p.text_field :title %> <br> <br>
 Description: <%= p.text_field :description %> <br> <br>
-
-  <%= p.fields_for :user_projects do |u| %>
-    <%= u.label :user %>
-    <%= u.collection_select :user_id, User.all, :id, :name %> <br><br>
+Users Already:
+  <% @users.each do |user|%>
+    | <%= user.name%>
   <% end %>
+<br><br>
+
+
+Users:
+<% available_users = User.all - @users %>
+<%= p.collection_select :user_id, available_users, :id, :name, prompt: true %> <br><br>
 
 <%= p.submit %>
 <% end %>

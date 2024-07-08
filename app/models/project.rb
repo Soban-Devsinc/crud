@@ -5,6 +5,7 @@ class Project < ApplicationRecord
 
   accepts_nested_attributes_for :user_projects
 
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: true
   validates :description, presence: true, length: { in: 15..50 }
+
 end

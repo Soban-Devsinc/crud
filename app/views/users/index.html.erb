@@ -3,6 +3,16 @@
 
 <h1>Welcome to User Manager</h1>
 
+
+<% if flash[:errors] %>
+  <ul>
+    <% flash[:errors].each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+  
+
 <table border>
 <tr>
   <th> ID </th>

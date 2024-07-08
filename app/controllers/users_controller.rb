@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
   def index
     @users = User.all
   end
@@ -8,7 +7,6 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
-
   def create
      @user = User.create(user_params)
     if @user.valid?
@@ -44,6 +42,8 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => error
+    redirect_to users_path, notice: error.message
   end
 
   def user_params

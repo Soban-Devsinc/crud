@@ -6,8 +6,6 @@
 
 <%= form_with model: @user, local: true do |u| %>
 
-
-
 <% if flash[:errors].present? %>
   <div id="error_explanation">
     <h2><%= pluralize(flash[:errors].count, "error") %> prohibited this user from being saved:</h2>
@@ -18,8 +16,6 @@
     </ul>
   </div>
 <% end %>
-
-
 
   <%= u.label :name %>
   <%= u.text_field :name %>

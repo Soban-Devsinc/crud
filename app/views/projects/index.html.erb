@@ -18,6 +18,7 @@
     <td> <%= project.description %> </td>
 
     <td>
+      <%= link_to 'Edit',  edit_project_path(project)%>
       <%= button_to 'Delete',  project_path(project), method: "delete" %>
     </td>
 
