@@ -14,11 +14,17 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.create(project_params)
-    redirect_to projects_path
+    if @project.valid?
+      redirect_to @project
+    else
+      flash[:errors] = @project.errors.full_messages
+      redirect_to new_project_url
+    end
   end
 
   def destroy
     @project.destroy
+    redirect_to projects_path
   end
 
   def show

@@ -4,7 +4,7 @@ class CreateUserProjects < ActiveRecord::Migration[7.1]
       t.references :user, null: false, foreign_key: true
       t.references :project, null: false, foreign_key: true
 
-      t.timestamps 
+      t.timestamps
     end
   end
 end

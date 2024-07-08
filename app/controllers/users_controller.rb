@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :destroy, :update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+
   def index
     @users = User.all
   end
@@ -9,30 +10,35 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    redirect_to users_path
+     @user = User.create(user_params)
+    if @user.valid?
+      redirect_to @user
+    else
+      flash[:errors] = @user.errors.full_messages
+      redirect_to new_user_url
+    end
   end
 
   def show
     @projects = @user.projects
   end
 
-  # def update
-  # end
-
   def edit
   end
 
   def update
-    @user.update(user_params)
-    redirect_to users_path
+    if @user.update(user_params)
+      redirect_to @user
+    else
+      flash[:errors] = @user.errors.full_messages
+      redirect_to new_user_url
+    end
   end
-
 
   def destroy
     @user.destroy
+    redirect_to users_url
   end
-
 
   private
 
@@ -41,7 +47,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:id, :name, :email, :cnic)
+    params.require(:user).permit(:name, :email, :cnic, :dateofbirth)
   end
-
 end

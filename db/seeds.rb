@@ -9,4 +9,5 @@
 #   end
 
 
-User.create(name:"Soban", cnic: "3520208804293", email: "sobansaeed123@gmail.com")
+# User.create(name:"Subhan", cnic: "3520208804290", email: "sobansaeed123@gmail.com")
+Project.create(title:"New Project", description: "idkidkidkidkidkidkidk")
