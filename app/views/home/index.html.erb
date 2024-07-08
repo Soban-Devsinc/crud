@@ -1,0 +1,15 @@
+<h1>Welcome to Home</h1>
+<%= link_to 'Users', users_path %>
+<%= link_to 'Projects', projects_path %>
+<h1>All Projects</h1>
+ <% @projects.each do |project| %>
+  Title: <%= project.title %> <br>
+  Description: <%= project.description %> <br>
+  Users:
+  <% project.users.each do |user| %>
+    <%= link_to user.name, user_path(user.id) %>
+  <% end %>
+<br><br>
+<% end %>
+
+
