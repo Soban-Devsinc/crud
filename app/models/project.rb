@@ -1,7 +1,9 @@
 class Project < ApplicationRecord
 
   has_many :user_projects
-  has_many :users, :through => :user_projects, dependent: :delete_all
+  has_many :users, :through => :user_projects, dependent: :destroy
+  has_many :post_comments, as: :commentable
+
 
   accepts_nested_attributes_for :user_projects
 
