@@ -1,0 +1,32 @@
+<h1>Edit User</h1>
+
+<%= form_with model: @user, local: true do |u| %>
+
+<% if flash[:errors].present? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(flash[:errors].count, "error") %> prohibited this user from being saved:</h2>
+    <ul>
+      <% flash[:errors].each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
+  <%= u.label :name %>
+  <%= u.text_field :name %>
+  <br>  <br>
+  <%= u.label :email %>
+  <%= u.text_field :email %>
+<br>  <br>
+  <%= u.label :cnic %>
+  <%= u.text_field :cnic %>
+<br>  <br>
+  <%= u.label :dateofbirth, "Date of Birth" %>
+  <%= u.date_select :dateofbirth, start_year: 1900, end_year: Time.now.year %>
+<br>  <br>
+  <%= u.submit %>
+  </div>
+<% end %>
