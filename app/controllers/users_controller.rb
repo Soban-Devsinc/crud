@@ -4,9 +4,11 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
+
   def new
     @user = User.new
   end
+
   def create
      @user = User.create(user_params)
     if @user.valid?
@@ -34,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
+    @user.destroy ####
     redirect_to users_url
   end
 
